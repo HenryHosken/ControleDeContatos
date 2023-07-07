@@ -21,6 +21,6 @@ namespace ControleDeContatos
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                });        
     }
 }
