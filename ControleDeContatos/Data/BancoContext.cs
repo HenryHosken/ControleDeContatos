@@ -9,7 +9,7 @@ namespace ControleDeContatos.Data
         {
         }
 
-         public DbSet<ContatoModels> Contatos { get; set; }
+         public DbSet<ContatoModel> Contatos { get; set; }
 
     }
 }
