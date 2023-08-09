@@ -1,6 +1,8 @@
 ﻿using ControleDeContatos.Data;
 using ControleDeContatos.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -23,6 +25,7 @@ namespace ControleDeContatos.Repositorio
         }
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
+            usuario.DataCadastro = DateTime.Now;
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges();
             return usuario;
@@ -32,11 +35,12 @@ namespace ControleDeContatos.Repositorio
         {
             UsuarioModel usuarioDB = ListarPorId(usuario.Id);
 
-            if (usuarioDB == null) throw new System.Exception("Houve um erro na atualização do contato!");
+            if (usuarioDB == null) throw new Exception("Houve um erro na atualização do contato!");
 
             usuarioDB.Name = usuario.Name;
             usuarioDB.Email = usuario.Email;
             usuarioDB.Perfil = usuario.Perfil;
+            usuarioDB.DataAtualizacao = DateTime.Now;
             _bancoContext.Usuarios.Update(usuarioDB);
             _bancoContext.SaveChanges();
             
